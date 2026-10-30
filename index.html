@@ -19,16 +19,23 @@
       </div>
       <div class="rules-panel"><div class="rules-content">
         <p class="eyebrow">How to play</p>
+        <fieldset class="difficulty-picker">
+          <legend>Choose your difficulty</legend>
+          <label><input type="radio" name="difficulty" value="easy"><span>Easy</span></label>
+          <label><input type="radio" name="difficulty" value="normal" checked><span>Normal</span></label>
+          <label><input type="radio" name="difficulty" value="hard"><span>Hard <small class="hard-warning">Polluted drops explode and empty your can!</small></span></label>
+        </fieldset>
+        <p id="difficulty-summary" class="difficulty-summary"></p>
         <div class="rule-list">
           <div class="rule"><span class="rule-drop clean-mini" aria-hidden="true"></span><span>Move the can to catch clean drops</span><strong>+10 points</strong></div>
           <div class="rule"><span class="rule-drop polluted-mini" aria-hidden="true"><i></i></span><span>Avoid polluted drops</span><strong class="negative-text">-5 points</strong></div>
-          <div class="rule"><span class="timer-icon">30</span><span>Reach <b>100 points</b> in 30 seconds</span></div>
+          <div class="rule"><span class="timer-icon">30</span><span>Reach <b id="start-goal">100 points</b> in 30 seconds</span></div>
         </div>
         <button id="start-btn" class="primary-button" type="button">Start Game</button>
       </div></div>
     </section>
     <section id="game-screen" class="screen game-screen" hidden aria-label="Water Drop game">
-      <header class="game-header"><div class="brand-lockup"><span class="brand-drop" aria-hidden="true"></span><span>charity: water</span></div><div class="stats"><div><span>Score</span><strong id="score">0</strong></div><div class="goal-stat"><span>Goal</span><strong>100</strong></div><div class="time-stat"><span>Time</span><strong><span id="time">30</span>s</strong></div></div><button id="reset-btn" class="reset-button" type="button">Reset</button></header>
+      <header class="game-header"><div class="brand-lockup"><span class="brand-drop" aria-hidden="true"></span><span>charity: water</span></div><div class="game-difficulty" id="game-difficulty">Normal</div><div class="stats"><div><span>Score</span><strong id="score">0</strong></div><div class="goal-stat"><span>Goal</span><strong id="game-goal">100</strong></div><div class="time-stat"><span>Time</span><strong><span id="time">30</span>s</strong></div></div><div class="game-controls"><button id="sound-btn" class="sound-button" type="button" aria-pressed="true">Sound On</button><button id="reset-btn" class="reset-button" type="button">Reset</button></div></header>
       <div class="progress-row"><span id="progress-label">0 / 100</span><progress id="progress" value="0" max="100" aria-label="Goal progress"></progress><span id="progress-remaining">100 pts to go</span></div>
       <p id="status" class="game-instruction" role="status"><span class="desktop-instruction">Move your mouse or use ← → to catch clean drops.</span><span class="mobile-instruction">Drag the can to catch clean drops.</span></p><div id="game-container"><div id="drop-layer"></div><div id="player" aria-label="Water can"><img src="img/water-can-transparent.png" alt="Yellow water can"></div></div>
     </section>
@@ -36,6 +43,9 @@
       <div class="result-summary"><div class="brand-lockup"><span class="brand-drop" aria-hidden="true"></span><span>charity: water</span></div><div class="result-art" aria-hidden="true"><span class="yellow-mini"></span><span class="clean-mini"></span><span class="yellow-mini"></span></div><p class="time-up">Time's Up!</p><strong id="final-score">0</strong><p>Final Score</p><span id="result-badge" class="result-badge">Goal not reached</span></div>
       <div class="result-actions"><div><h2 id="result-title">You made a difference.</h2><p id="result-text">Clean water changes everything.</p></div><button id="replay-btn" class="primary-button" type="button">Play Again</button><a class="learn-button" href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">Learn About charity: water</a><a class="result-link" href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">charitywater.org</a></div>
     </section>
-  </main><div id="confetti-layer" aria-hidden="true"></div>
+  </main>
+  <footer class="site-footer"><p>charity: water works to bring clean, safe drinking water to people around the world. This is a student project; game scores do not represent real donations.</p><nav aria-label="charity: water links"><a href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">Learn about charity: water</a><a href="https://www.charitywater.org/donate/the-spring" target="_blank" rel="noopener noreferrer">Donate</a></nav></footer>
+  <div id="confetti-layer" aria-hidden="true"></div>
+  <div id="explosion-layer" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>
